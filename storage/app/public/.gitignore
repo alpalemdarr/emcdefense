@@ -1,0 +1,2 @@
+# Allow storage/app/public media assets for demo deployments
+!.gitignore
