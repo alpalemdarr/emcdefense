@@ -650,19 +650,214 @@
             color: #334155 !important;
         }
 
-        /* Responsive */
+        /* ── BACKDROP & MOBILE SIDEBAR ── */
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .sidebar-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        body.sidebar-open {
+            overflow: hidden !important;
+        }
+        .btn-sidebar-close {
+            background: #F1F5F9;
+            border: 1px solid var(--border-color);
+            color: #475569;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .btn-sidebar-close:hover {
+            background: #E2E8F0;
+            color: #0F172A;
+        }
+
+        /* ── RESPONSIVE MEDIA QUERIES ── */
         @media (max-width: 992px) {
             .admin-sidebar {
                 transform: translateX(-100%);
+                width: 280px;
+                box-shadow: 8px 0 32px rgba(15, 23, 42, 0.2);
+                z-index: 1050;
             }
             .admin-sidebar.show {
                 transform: translateX(0);
             }
             .admin-main {
                 margin-left: 0;
+                width: 100%;
+                min-width: 0;
             }
             .btn-sidebar-toggle {
-                display: block;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .admin-topbar {
+                padding: 0 1.25rem;
+                height: 62px;
+            }
+            .topbar-left h5 {
+                font-size: 1.05rem !important;
+                max-width: 300px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .admin-content {
+                padding: 1.25rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-topbar {
+                padding: 0 0.85rem;
+                height: 58px;
+            }
+            .topbar-left {
+                gap: 0.6rem;
+                min-width: 0;
+                flex: 1;
+            }
+            .topbar-left h5 {
+                font-size: 0.95rem !important;
+                max-width: 190px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+            }
+            .btn-sidebar-toggle {
+                padding: 0.4rem 0.65rem;
+                font-size: 1.15rem;
+                min-width: 38px;
+                min-height: 38px;
+            }
+            .btn-live-site {
+                padding: 0.45rem 0.65rem;
+                font-size: 0.8rem;
+                gap: 0;
+            }
+            .btn-live-site span {
+                display: none;
+            }
+            .admin-content {
+                padding: 0.85rem 0.65rem;
+            }
+            .card-custom {
+                padding: 1rem 0.85rem !important;
+                border-radius: 12px !important;
+                margin-bottom: 1rem !important;
+            }
+            .card-header-custom {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.75rem !important;
+            }
+            .card-header-custom > div {
+                width: 100% !important;
+            }
+            .card-header-custom > div:last-child {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+            }
+            .card-header-custom > div:last-child .btn,
+            .card-header-custom > div:last-child .btn-emc,
+            .card-header-custom > div:last-child .btn-outline-emc {
+                flex: 1 1 auto !important;
+                text-align: center !important;
+                justify-content: center !important;
+                font-size: 0.82rem !important;
+                padding: 0.48rem 0.75rem !important;
+            }
+            .table-responsive {
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
+                margin-bottom: 0.75rem;
+                background: #FFFFFF;
+                -webkit-overflow-scrolling: touch;
+            }
+            .table-custom {
+                min-width: 680px !important;
+            }
+            .table-custom th,
+            .table-custom td {
+                padding: 0.65rem 0.75rem !important;
+                font-size: 0.82rem !important;
+            }
+
+            /* Prevent iOS automatic zoom when focusing inputs */
+            .form-control,
+            .form-select,
+            .form-control-custom,
+            .form-select-custom,
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px !important;
+            }
+
+            /* Dynamic Settings Tabs smooth horizontal swipe */
+            #settingsTabs {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 0.6rem !important;
+                margin-bottom: 1rem !important;
+                gap: 0.4rem !important;
+                scrollbar-width: none;
+            }
+            #settingsTabs::-webkit-scrollbar {
+                display: none;
+            }
+            #settingsTabs .nav-item {
+                flex: 0 0 auto !important;
+            }
+            #settingsTabs .nav-link {
+                white-space: nowrap !important;
+                font-size: 0.8rem !important;
+                padding: 0.48rem 0.85rem !important;
+            }
+
+            .alert {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.85rem !important;
+                border-radius: 10px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-sidebar {
+                width: 86vw;
+                max-width: 310px;
+            }
+            .topbar-left h5 {
+                max-width: 140px;
+            }
+            .admin-content {
+                padding: 0.75rem 0.45rem;
+            }
+            .card-custom {
+                padding: 0.85rem 0.65rem !important;
             }
         }
     </style>
@@ -678,6 +873,9 @@
                 <p class="brand-title">EMC DEFENSE</p>
                 <span class="brand-badge">Control Panel</span>
             </div>
+            <button type="button" class="btn-sidebar-close d-lg-none ms-auto" id="closeSidebar" aria-label="Menüyü Kapat">
+                <i class="bi bi-x-lg"></i>
+            </button>
         </div>
 
         <ul class="sidebar-menu">
@@ -781,18 +979,21 @@
         </div>
     </aside>
 
+    <!-- BACKDROP FOR MOBILE -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
     <!-- MAIN WRAPPER -->
     <div class="admin-main">
         <!-- TOPBAR -->
         <header class="admin-topbar">
             <div class="topbar-left">
-                <button class="btn-sidebar-toggle" id="toggleSidebar">
+                <button class="btn-sidebar-toggle" id="toggleSidebar" aria-label="Menüyü Aç/Kapat">
                     <i class="bi bi-list"></i>
                 </button>
                 <h5 class="mb-0 fw-bold" style="color: #0F172A; letter-spacing: -0.02em;">@yield('page_title', 'Dashboard')</h5>
             </div>
             <div class="topbar-right">
-                <a href="{{ route('home') }}" target="_blank" class="btn-live-site">
+                <a href="{{ route('home') }}" target="_blank" class="btn-live-site" title="Web Sitesini Yeni Sekmede Aç">
                     <i class="bi bi-globe"></i>
                     <span>Live Website</span>
                 </a>
@@ -836,12 +1037,53 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const toggleBtn = document.getElementById('toggleSidebar');
+        const closeBtn = document.getElementById('closeSidebar');
         const sidebar = document.getElementById('adminSidebar');
-        if(toggleBtn && sidebar) {
-            toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('show');
+        const backdrop = document.getElementById('sidebarBackdrop');
+
+        function openSidebar() {
+            if(sidebar) sidebar.classList.add('show');
+            if(backdrop) backdrop.classList.add('show');
+            document.body.classList.add('sidebar-open');
+        }
+
+        function closeSidebar() {
+            if(sidebar) sidebar.classList.remove('show');
+            if(backdrop) backdrop.classList.remove('show');
+            document.body.classList.remove('sidebar-open');
+        }
+
+        if(toggleBtn) {
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if(sidebar && sidebar.classList.contains('show')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
             });
         }
+
+        if(closeBtn) {
+            closeBtn.addEventListener('click', closeSidebar);
+        }
+
+        if(backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') closeSidebar();
+        });
+
+        // Auto-close on mobile link click
+        document.querySelectorAll('#adminSidebar .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 992) {
+                    closeSidebar();
+                }
+            });
+        });
 
         // Dropzone file selection preview feedback
         document.querySelectorAll('.upload-dropzone input[type="file"]').forEach(input => {
