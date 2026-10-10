@@ -1,0 +1,12 @@
+.git
+.github
+.claude
+node_modules
+.env
+.env.*
+tests
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+.phpunit.result.cache
