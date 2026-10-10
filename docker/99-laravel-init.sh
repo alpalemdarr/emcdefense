@@ -12,7 +12,12 @@ if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
 fi
 
 # Ensure storage link
+rm -rf /var/www/html/public/storage || true
 php artisan storage:link --no-interaction || true
+
+# Ensure storage permissions
+chown -R www-data:www-data /var/www/html/storage
+chmod -R 775 /var/www/html/storage
 
 # Run database migrations
 echo "==> Running Migrations..."

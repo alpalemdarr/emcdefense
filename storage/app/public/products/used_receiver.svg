@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgUsed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c22"/>
+      <stop offset="100%" stop-color="#141e42"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="350" fill="url(#bgUsed)"/>
+
+  <!-- Instrument Chassis -->
+  <rect x="50" y="65" width="400" height="220" rx="8" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  
+  <!-- CRT / LCD Screen -->
+  <rect x="75" y="90" width="200" height="150" rx="6" fill="#020617" stroke="#334155" stroke-width="2"/>
+  <!-- Screen Grid -->
+  <path d="M75,120 H275 M75,150 H275 M75,180 H275 M75,210 H275 M115,90 V240 M155,90 V240 M195,90 V240 M235,90 V240" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
+  <!-- Spectrum Waveform (Green Trace) -->
+  <path d="M 75,225 L 120,225 L 135,210 L 155,225 L 175,225 L 190,115 L 205,225 L 240,225 L 275,225" fill="none" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Screen Label -->
+  <text x="85" y="110" font-family="monospace" font-size="9" fill="#4ade80">CENTER 1.500 GHz</text>
+  <text x="85" y="235" font-family="monospace" font-size="9" fill="#4ade80">RBW 100 kHz</text>
+
+  <!-- Control Buttons & Rotary Knob -->
+  <!-- Numeric Keypad Grid -->
+  <g fill="#334155">
+    <rect x="295" y="95" width="18" height="14" rx="2"/>
+    <rect x="320" y="95" width="18" height="14" rx="2"/>
+    <rect x="345" y="95" width="18" height="14" rx="2"/>
+    
+    <rect x="295" y="115" width="18" height="14" rx="2"/>
+    <rect x="320" y="115" width="18" height="14" rx="2"/>
+    <rect x="345" y="115" width="18" height="14" rx="2"/>
+
+    <rect x="295" y="135" width="18" height="14" rx="2"/>
+    <rect x="320" y="135" width="18" height="14" rx="2"/>
+    <rect x="345" y="135" width="18" height="14" rx="2"/>
+  </g>
+
+  <!-- Large Tuning Knob -->
+  <circle cx="395" cy="130" r="28" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+  <circle cx="395" cy="130" r="22" fill="#334155"/>
+  <circle cx="385" cy="120" r="4" fill="#cbd5e1"/>
+
+  <!-- RF Input Precision Connector -->
+  <rect x="320" y="180" width="105" height="55" rx="4" fill="#0f172a" stroke="#334155"/>
+  <circle cx="370" cy="205" r="14" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="370" cy="205" r="5" fill="#1e293b"/>
+  <text x="370" y="230" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" fill="#f87171" font-weight="700">50Ω MAX +30dBm</text>
+
+  <!-- Certified Refurbished Badge -->
+  <rect x="15" y="15" width="140" height="26" rx="6" fill="rgba(245,158,11,0.2)" stroke="#f59e0b"/>
+  <text x="85" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#fbbf24" letter-spacing="1">PRE-OWNED EMI RX</text>
+
+  <!-- Model Brand -->
+  <text x="75" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8" font-weight="700">R&amp;S ESCI · 9 kHz - 3.0 GHz</text>
+</svg>

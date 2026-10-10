@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="certBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b122e"/>
+      <stop offset="50%" stop-color="#1f183d"/>
+      <stop offset="100%" stop-color="#070c22"/>
+    </linearGradient>
+    <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="420" rx="16" fill="url(#certBg3)"/>
+  <rect x="20" y="20" width="560" height="380" rx="10" fill="none" stroke="url(#goldGrad3)" stroke-width="2" stroke-dasharray="8 4"/>
+  <rect x="28" y="28" width="544" height="364" rx="8" fill="none" stroke="rgba(234, 179, 8, 0.3)" stroke-width="1"/>
+  <circle cx="300" cy="100" r="42" fill="none" stroke="url(#goldGrad3)" stroke-width="3"/>
+  <polygon points="300,75 307,93 325,93 311,104 316,122 300,111 284,122 289,104 275,93 293,93" fill="url(#goldGrad3)"/>
+  <text x="300" y="175" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" fill="#ffffff" letter-spacing="1.5">CERTIFICATE OF CONFORMANCE</text>
+  <text x="300" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="14" fill="#fef08a" letter-spacing="2">OCCUPATIONAL HEALTH &amp; SAFETY</text>
+  <line x1="180" y1="225" x2="420" y2="225" stroke="url(#goldGrad3)" stroke-width="1.5"/>
+  <text x="300" y="260" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26" fill="url(#goldGrad3)">ISO 45001:2018</text>
+  <text x="300" y="288" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="14" fill="#cbd5e1">Occupational Health &amp; Safety Management Standard</text>
+  <text x="300" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="400" font-size="12" fill="#94a3b8">EMC Defense High Voltage Pulse Laboratory Operations</text>
+  <text x="300" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="rgba(255,255,255,0.6)" letter-spacing="1">CERTIFIED SAFETY SYSTEM</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgLisn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c22"/>
+      <stop offset="100%" stop-color="#0f1e40"/>
+    </linearGradient>
+    <linearGradient id="caseMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="350" fill="url(#bgLisn)"/>
+
+  <!-- LISN 19-inch Enclosure -->
+  <rect x="70" y="80" width="360" height="190" rx="8" fill="url(#caseMetal)" stroke="#475569" stroke-width="2"/>
+  <!-- Front Panel Inner Border -->
+  <rect x="85" y="95" width="330" height="160" rx="4" fill="#0f172a" stroke="#1e293b"/>
+
+  <!-- Handles -->
+  <rect x="55" y="125" width="15" height="100" rx="4" fill="#64748b" stroke="#334155"/>
+  <rect x="430" y="125" width="15" height="100" rx="4" fill="#64748b" stroke="#334155"/>
+
+  <!-- EUT High Current Sockets -->
+  <rect x="110" y="125" width="60" height="70" rx="4" fill="#1e293b" stroke="#64748b"/>
+  <circle cx="130" cy="150" r="8" fill="#ef4444"/>
+  <circle cx="150" cy="150" r="8" fill="#3b82f6"/>
+  <circle cx="140" cy="175" r="7" fill="#eab308"/>
+  <text x="140" y="210" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94a3b8" font-weight="600">EUT MAINS</text>
+
+  <!-- Phase Selector Rotary Switch -->
+  <circle cx="250" cy="160" r="28" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  <circle cx="250" cy="160" r="18" fill="#334155"/>
+  <rect x="247" y="142" width="6" height="20" rx="2" fill="#38bdf8"/>
+  <text x="250" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94a3b8" font-weight="600">PHASE SELECT</text>
+
+  <!-- RF Output BNC / N-Connector -->
+  <circle cx="350" cy="160" r="16" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="350" cy="160" r="8" fill="#475569"/>
+  <circle cx="350" cy="160" r="3" fill="#f8fafc"/>
+  <text x="350" y="205" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94a3b8" font-weight="600">RF OUTPUT 50Ω</text>
+
+  <!-- Top Model Print -->
+  <text x="250" y="115" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#60a5fa" font-weight="700" letter-spacing="1">LISN LS032A2 · 50μH / 32A</text>
+
+  <rect x="15" y="15" width="130" height="26" rx="6" fill="rgba(30,45,125,0.8)" stroke="#3d52c4"/>
+  <text x="80" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#93c5fd" letter-spacing="1">LISN NETWORK</text>
+</svg>

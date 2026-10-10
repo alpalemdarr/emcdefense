@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c22"/>
+      <stop offset="100%" stop-color="#111d4d"/>
+    </linearGradient>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="500" height="350" fill="url(#bgGrad)"/>
+  <!-- Grid -->
+  <path d="M0,50 H500 M0,100 H500 M0,150 H500 M0,200 H500 M0,250 H500 M0,300 H500 M50,0 V350 M100,0 V350 M150,0 V350 M200,0 V350 M250,0 V350 M300,0 V350 M350,0 V350 M400,0 V350 M450,0 V350" stroke="rgba(61,82,196,0.12)" stroke-width="1"/>
+  
+  <!-- Base Stand -->
+  <rect x="170" y="270" width="160" height="24" rx="4" fill="url(#metalGrad)"/>
+  <rect x="200" y="294" width="100" height="15" rx="3" fill="#1e293b"/>
+  
+  <!-- Marx Column Pillars -->
+  <rect x="200" y="60" width="16" height="210" rx="3" fill="#334155"/>
+  <rect x="284" y="60" width="16" height="210" rx="3" fill="#334155"/>
+  
+  <!-- Capacitor Stages -->
+  <rect x="216" y="80" width="68" height="22" rx="4" fill="#1e2d7d" stroke="#3d52c4" stroke-width="2"/>
+  <circle cx="250" cy="115" r="8" fill="#f8fafc" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+  
+  <rect x="216" y="130" width="68" height="22" rx="4" fill="#1e2d7d" stroke="#3d52c4" stroke-width="2"/>
+  <circle cx="250" cy="165" r="8" fill="#f8fafc" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+
+  <rect x="216" y="180" width="68" height="22" rx="4" fill="#1e2d7d" stroke="#3d52c4" stroke-width="2"/>
+  <circle cx="250" cy="215" r="8" fill="#f8fafc" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+
+  <rect x="216" y="230" width="68" height="22" rx="4" fill="#1e2d7d" stroke="#3d52c4" stroke-width="2"/>
+
+  <!-- High Voltage Toroid Top Terminal -->
+  <ellipse cx="250" cy="55" rx="60" ry="18" fill="url(#metalGrad)" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- Electric Discharge Arc -->
+  <path d="M 250,55 Q 310,40 370,90 T 430,70" fill="none" stroke="#38bdf8" stroke-width="3" filter="url(#glow)"/>
+  <path d="M 250,55 Q 190,30 130,80 T 70,60" fill="none" stroke="#60a5fa" stroke-width="2" filter="url(#glow)"/>
+  
+  <!-- High Voltage Badge -->
+  <rect x="15" y="15" width="150" height="26" rx="6" fill="rgba(30,45,125,0.8)" stroke="#3d52c4"/>
+  <text x="90" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#93c5fd" letter-spacing="1">MARX GENERATOR</text>
+</svg>

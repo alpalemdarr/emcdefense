@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAbs" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080d24"/>
+      <stop offset="100%" stop-color="#101e4a"/>
+    </linearGradient>
+    <linearGradient id="pyr1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2d7d"/>
+      <stop offset="100%" stop-color="#0d163d"/>
+    </linearGradient>
+    <linearGradient id="pyr2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d52c4"/>
+      <stop offset="100%" stop-color="#1e2d7d"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="350" fill="url(#bgAbs)"/>
+  
+  <!-- Base Board of Absorber Tile -->
+  <polygon points="100,280 400,280 440,240 140,240" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  
+  <!-- 3D Pyramids Array -->
+  <!-- Row 1 (Back) -->
+  <g transform="translate(40, -40)">
+    <!-- Pyramid 1 -->
+    <polygon points="150,240 180,240 165,150" fill="url(#pyr1)"/>
+    <polygon points="180,240 200,220 165,150" fill="url(#pyr2)"/>
+    <!-- Pyramid 2 -->
+    <polygon points="210,240 240,240 225,150" fill="url(#pyr1)"/>
+    <polygon points="240,240 260,220 225,150" fill="url(#pyr2)"/>
+    <!-- Pyramid 3 -->
+    <polygon points="270,240 300,240 285,150" fill="url(#pyr1)"/>
+    <polygon points="300,240 320,220 285,150" fill="url(#pyr2)"/>
+  </g>
+
+  <!-- Row 2 (Front) -->
+  <!-- Pyramid A -->
+  <polygon points="130,270 175,270 152,140" fill="url(#pyr1)"/>
+  <polygon points="175,270 205,245 152,140" fill="url(#pyr2)"/>
+
+  <!-- Pyramid B (Center highlight) -->
+  <polygon points="210,270 255,270 232,120" fill="url(#pyr1)"/>
+  <polygon points="255,270 285,245 232,120" fill="url(#pyr2)"/>
+  
+  <!-- Pyramid C -->
+  <polygon points="290,270 335,270 312,140" fill="url(#pyr1)"/>
+  <polygon points="335,270 365,245 312,140" fill="url(#pyr2)"/>
+
+  <!-- Spec callout -->
+  <circle cx="232" cy="120" r="4" fill="#38bdf8"/>
+  <line x1="232" y1="120" x2="320" y2="70" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <rect x="320" y="55" width="130" height="28" rx="6" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="385" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#93c5fd" font-weight="600">80 MHz - 40 GHz</text>
+
+  <rect x="15" y="15" width="130" height="26" rx="6" fill="rgba(30,45,125,0.8)" stroke="#3d52c4"/>
+  <text x="80" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#93c5fd" letter-spacing="1">RF ABSORBER</text>
+</svg>

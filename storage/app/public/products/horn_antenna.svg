@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAnt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c22"/>
+      <stop offset="100%" stop-color="#121b47"/>
+    </linearGradient>
+    <linearGradient id="hornMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="50%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="350" fill="url(#bgAnt)"/>
+
+  <!-- Tripod Legs -->
+  <line x1="200" y1="210" x2="140" y2="310" stroke="#475569" stroke-width="4"/>
+  <line x1="200" y1="210" x2="200" y2="310" stroke="#475569" stroke-width="4"/>
+  <line x1="200" y1="210" x2="260" y2="310" stroke="#475569" stroke-width="4"/>
+  <circle cx="200" cy="210" r="10" fill="#334155"/>
+
+  <!-- Mast Column -->
+  <rect x="195" y="140" width="10" height="70" fill="#64748b"/>
+
+  <!-- Double Ridged Horn Antenna Body -->
+  <polygon points="170,120 170,150 280,185 280,85" fill="url(#hornMetal)" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="280,85 280,185 305,175 305,95" fill="#475569" stroke="#1e293b"/>
+
+  <!-- Horn Ridges -->
+  <path d="M 170,135 Q 220,135 280,110" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+  <path d="M 170,135 Q 220,135 280,160" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+
+  <!-- Waveguide Back Cavity & N-Connector -->
+  <rect x="145" y="125" width="25" height="20" rx="3" fill="#1e293b" stroke="#64748b"/>
+  <rect x="135" y="130" width="10" height="10" fill="#cbd5e1"/>
+  <!-- Coaxial Cable -->
+  <path d="M 135,135 Q 110,140 120,200 T 150,290" fill="none" stroke="#0f172a" stroke-width="5"/>
+  <path d="M 135,135 Q 110,140 120,200 T 150,290" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- RF Waves Emitted -->
+  <path d="M 320,110 A 30 30 0 0 1 320,160" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <path d="M 345,95 A 50 50 0 0 1 345,175" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+  <path d="M 370,80 A 70 70 0 0 1 370,190" fill="none" stroke="#818cf8" stroke-width="3"/>
+
+  <rect x="15" y="15" width="130" height="26" rx="6" fill="rgba(30,45,125,0.8)" stroke="#3d52c4"/>
+  <text x="80" y="32" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#93c5fd" letter-spacing="1">HORN ANTENNA</text>
+</svg>
