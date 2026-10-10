@@ -220,6 +220,35 @@
         font-weight: 500;
     }
 
+    /* ── COMPLIANCE BADGES BOX ── */
+    .product-compliance-box {
+        background: var(--slate-50);
+        border: 1px solid var(--border-light);
+        border-radius: var(--r-sm);
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+    .compliance-badge-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--navy-900);
+    }
+    @media (max-width: 600px) {
+        .product-compliance-box {
+            padding: 1rem 0.85rem;
+            gap: 0.85rem;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
     /* ── STICKY SIDEBAR ── */
     .product-sidebar-card {
         background: #FFFFFF;
@@ -417,6 +446,16 @@
         border-color: #3B82F6 !important;
         color: #38BDF8 !important;
     }
+    [data-theme="dark"] .product-compliance-box {
+        background: #11192E !important;
+        border-color: #1E293B !important;
+    }
+    [data-theme="dark"] .compliance-badge-item {
+        color: #F8FAFC !important;
+    }
+    [data-theme="dark"] .compliance-badge-item i.bi-building-check {
+        color: #38BDF8 !important;
+    }
 </style>
 @endpush
 
@@ -532,15 +571,18 @@
                 </div>
 
                 {{-- Compliance Badges --}}
-                <div style="background:var(--slate-50);border:1px solid var(--border-light);border-radius:var(--r-sm);padding:1.25rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
-                    <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:700;color:var(--navy-900);">
-                        <i class="bi bi-shield-check" style="color:var(--emerald-600);font-size:1.2rem;"></i> {{ $isEn ? 'MIL-STD-461G Qualified' : 'MIL-STD-461G Onaylı' }}
+                <div class="product-compliance-box">
+                    <div class="compliance-badge-item">
+                        <i class="bi bi-shield-check" style="color:var(--emerald-600);font-size:1.2rem;"></i>
+                        <span>{{ $isEn ? 'MIL-STD-461G Qualified' : 'MIL-STD-461G Onaylı' }}</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:700;color:var(--navy-900);">
-                        <i class="bi bi-patch-check-fill" style="color:var(--blue-600);font-size:1.2rem;"></i> ISO 9001:2015 {{ $isEn ? 'Certified' : 'Belgeli' }}
+                    <div class="compliance-badge-item">
+                        <i class="bi bi-patch-check-fill" style="color:var(--blue-600);font-size:1.2rem;"></i>
+                        <span>ISO 9001:2015 {{ $isEn ? 'Certified' : 'Belgeli' }}</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:700;color:var(--navy-900);">
-                        <i class="bi bi-building-check" style="color:var(--navy-900);font-size:1.2rem;"></i> {{ $isEn ? 'Defense Facility Clearance' : 'Tesis Güvenlik Uyumu' }}
+                    <div class="compliance-badge-item">
+                        <i class="bi bi-building-check" style="color:var(--brand-primary);font-size:1.2rem;"></i>
+                        <span>{{ $isEn ? 'Defense Facility Clearance' : 'Tesis Güvenlik Uyumu' }}</span>
                     </div>
                 </div>
             </div>

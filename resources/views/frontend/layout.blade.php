@@ -820,6 +820,7 @@
             border-radius: 50px;
             transition: all 0.2s ease;
             text-decoration: none;
+            white-space: nowrap;
         }
         .hud-rfq-btn {
             background: var(--brand-primary);
@@ -844,6 +845,46 @@
             background: #E2E8F0;
             color: var(--brand-primary);
             transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .defense-floating-hud {
+                bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+                right: 14px;
+                padding: 4px;
+                gap: 5px;
+            }
+            .hud-rfq-btn {
+                padding: 6px 11px;
+                font-size: 0.76rem;
+            }
+            .hud-top-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .defense-floating-hud {
+                bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+                right: 10px;
+                padding: 3px;
+                gap: 4px;
+            }
+            .hud-rfq-btn {
+                padding: 5px 9px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* Automatically hide floating HUD when mobile menu or modal is open */
+        body.drawer-open .defense-floating-hud,
+        body.modal-open .defense-floating-hud,
+        .nav-mobile.open ~ .defense-floating-hud,
+        .modal-overlay.open ~ .defense-floating-hud {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
 
         /* ── 3D HERO CANVAS ── */
@@ -1269,6 +1310,11 @@
             padding: 0.5rem;
             border: none;
             background: none;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            z-index: 9005;
         }
         .nav-hamburger span {
             display: block;
@@ -1276,7 +1322,18 @@
             height: 2px;
             background: var(--brand-primary);
             border-radius: 2px;
-            transition: var(--tr);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+            transform-origin: center;
+        }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
 
         /* ── MOBILE DRAWER ── */
@@ -1287,13 +1344,17 @@
             left: 0;
             right: 0;
             bottom: 0;
+            height: calc(100vh - 78px);
+            height: calc(100dvh - 78px);
             background: #FFFFFF;
             z-index: 8999;
-            padding: 1.5rem;
+            padding: 1rem 1.25rem calc(2rem + env(safe-area-inset-bottom, 0px));
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.35rem;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             border-top: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         .nav-mobile.open { display: flex; }
         .nav-mobile a {
@@ -1307,7 +1368,8 @@
             text-decoration: none;
             border-radius: var(--r-xs);
         }
-        .nav-mobile a:hover {
+        .nav-mobile a:hover,
+        .nav-mobile a:active {
             color: var(--brand-primary);
             background: var(--brand-light);
         }
@@ -1790,6 +1852,204 @@
             margin-bottom: 0.2rem;
         }
 
+        /* Responsive Modal Grids & Controls */
+        .rfq-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .rfq-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 0.85rem;
+        }
+        .rfq-grid-devre {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+        .rfq-dim-wrap {
+            max-width: 280px;
+        }
+        .rfq-upload-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .rfq-upload-row .rfq-form-label {
+            min-width: 130px;
+            margin: 0;
+        }
+        .rfq-upload-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .rfq-upload-btn {
+            background: #2F80ED !important;
+            border: none !important;
+            padding: 0.5rem 1.4rem !important;
+            font-weight: 700 !important;
+            border-radius: 6px;
+            color: #FFFFFF !important;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .rfq-upload-btn:hover {
+            background: #1E70BF !important;
+        }
+        .rfq-filename {
+            font-size: 0.85rem;
+            color: #64748B;
+            font-style: italic;
+        }
+        .rfq-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+        .rfq-modal-footer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .rfq-modal-footer-actions .rfq-btn-group {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+        .rfq-btn-fullpage {
+            font-size: 0.88rem;
+            padding: 0.55rem 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .rfq-btn-submit {
+            background: linear-gradient(135deg, #2F80ED 0%, #1E70BF 100%) !important;
+            border: none !important;
+            font-weight: 700 !important;
+            padding: 0.6rem 1.35rem !important;
+            color: #FFFFFF !important;
+            border-radius: var(--r-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .rfq-grid-3 {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .rfq-modal-header {
+                padding: 1rem 1.15rem;
+            }
+            .rfq-modal-title {
+                font-size: 1.15rem;
+            }
+            .rfq-modal-subtitle {
+                font-size: 0.72rem;
+                line-height: 1.4;
+            }
+            .modal-card {
+                margin: 0.5rem auto;
+                max-height: 94vh;
+                border-radius: 8px;
+                width: calc(100% - 1rem);
+            }
+            .rfq-modal-body {
+                padding: 1rem 0.85rem !important;
+            }
+            .rfq-grid-2 {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .rfq-grid-devre {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .rfq-power-toggle {
+                width: 100%;
+                max-width: 100%;
+                height: 42px;
+            }
+            .rfq-power-btn {
+                font-size: 1rem;
+            }
+            .rfq-dim-wrap {
+                max-width: 100%;
+            }
+            .rfq-upload-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            .rfq-upload-row .rfq-form-label {
+                min-width: 100%;
+            }
+            .rfq-upload-controls {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 0.4rem;
+            }
+            .rfq-upload-btn {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 0.75rem 1rem !important;
+            }
+            .rfq-filename {
+                text-align: center;
+                display: block;
+                word-break: break-all;
+            }
+            .rfq-contact-box {
+                padding: 0.85rem 0.75rem;
+            }
+            .rfq-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .rfq-modal-footer-actions {
+                flex-direction: column-reverse;
+                gap: 0.75rem;
+                width: 100%;
+            }
+            .rfq-modal-footer-actions .rfq-btn-group {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 0.6rem;
+            }
+            .rfq-modal-footer-actions button,
+            .rfq-modal-footer-actions a {
+                width: 100% !important;
+                justify-content: center !important;
+                text-align: center !important;
+                padding: 0.85rem 1rem !important;
+                box-sizing: border-box !important;
+            }
+            #rfqModal .form-control {
+                font-size: 16px !important;
+            }
+        }
+
         /* Dark Mode for RFQ Modal */
         [data-theme="dark"] .rfq-modal-header {
             border-bottom: 1px solid #1E293B !important;
@@ -1832,6 +2092,12 @@
         }
         [data-theme="dark"] .rfq-contact-label {
             color: #CBD5E1 !important;
+        }
+        [data-theme="dark"] .rfq-filename {
+            color: #94A3B8 !important;
+        }
+        [data-theme="dark"] .rfq-modal-footer-actions {
+            border-top-color: #1E293B !important;
         }
         [data-theme="dark"] #rfqModal .form-control {
             background: #131C31 !important;
@@ -1998,6 +2264,14 @@
 
 {{-- MOBILE DRAWER --}}
 <div class="nav-mobile" id="mobileDrawer">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0.25rem 0.75rem;margin-bottom:0.75rem;border-bottom:1px solid rgba(148,163,184,0.2);">
+        <span style="font-family:var(--font-head);font-size:0.85rem;font-weight:800;letter-spacing:0.08em;color:var(--text-heading);text-transform:uppercase;">
+            <i class="bi bi-shield-shaded text-primary me-1"></i> {{ $isEn ? 'Defense Navigation' : 'Savunma Menüsü' }}
+        </span>
+        <button type="button" onclick="closeMobileDrawer()" aria-label="Close menu" style="background:rgba(148,163,184,0.15);border:none;border-radius:6px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--text-heading);cursor:pointer;font-size:1.1rem;transition:background 0.2s;">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:rgba(255,255,255,0.05);border-radius:var(--r-sm);margin-bottom:0.75rem;">
         <span style="font-size:0.82rem;font-weight:700;color:#F1F5F9;">{{ $isEn ? 'Language:' : 'Dil Seçimi:' }}</span>
         <div class="defense-lang-toggle">
@@ -2038,7 +2312,7 @@
     @if(!$contactPage || ($contactPage->is_active && $contactPage->show_in_navbar))
         <a href="{{ route('contact') }}">{{ $isEn ? 'Contact' : 'İletişim' }}</a>
     @endif
-    <button onclick="openRfqModal(); document.getElementById('mobileDrawer').classList.remove('open');" class="btn-primary w-100" style="margin-top:1.5rem;justify-content:center;padding:1rem;font-weight:700;width:100%;">
+    <button onclick="openRfqModal(); closeMobileDrawer();" class="btn-primary w-100" style="margin-top:1.5rem;justify-content:center;padding:1rem;font-weight:700;width:100%;">
         <i class="bi bi-file-earmark-text"></i> {{ $isEn ? 'Test Request Form (FR 7.1.4)' : 'Deney Talep Formu (FR 7.1.4)' }}
     </button>
 </div>
@@ -2151,10 +2425,11 @@
                     DOKÜMAN NO: {{ \App\Models\Setting::get('test_form_doc_no', 'FR 7.1.4') }} &bull; REVİZYON NO: {{ \App\Models\Setting::get('test_form_rev_no', '00') }} &bull; TARİH: {{ now()->format('d.m.Y') }}
                 </div>
             </div>
-            <button class="modal-close" onclick="closeRfqModal()">&times;</button>
+            <button class="modal-close" onclick="closeRfqModal()" aria-label="Close">&times;</button>
         </div>
-        <form action="{{ route('test-request.send') }}" method="POST" enctype="multipart/form-data" class="modal-body" style="padding: 1.5rem 1.75rem;">
+        <form action="{{ route('test-request.send') }}" method="POST" enctype="multipart/form-data" class="modal-body rfq-modal-body">
             @csrf
+            <input type="hidden" name="subject" id="rfq_subject" value="">
 
             {{-- 1. Cihazın Adı * --}}
             <div class="form-group mb-3">
@@ -2177,24 +2452,24 @@
                 <label class="rfq-form-label">
                     {{ $isEn ? 'Equipment Specifications' : 'Cihazın' }} <span style="color:#EF4444;font-weight:bold;">*</span>
                 </label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="rfq-grid-2">
                     <div>
                         <input type="number" step="any" name="voltage" id="modal_voltage" class="form-control" value="{{ old('voltage', '0') }}">
                         <span class="rfq-form-sublabel">
-                            {{ $isEn ? 'Supply Voltage' : 'Besleme Gerilimi' }}
+                            {{ $isEn ? 'Supply Voltage (V)' : 'Besleme Gerilimi (V)' }}
                         </span>
                     </div>
                     <div>
                         <input type="number" step="any" name="current" id="modal_current" class="form-control" value="{{ old('current', '0') }}">
                         <span class="rfq-form-sublabel">
-                            {{ $isEn ? 'Current Drawn Per Phase' : 'Faz başına çektiği akım' }}
+                            {{ $isEn ? 'Current Drawn Per Phase (A)' : 'Faz başına çektiği akım (A)' }}
                         </span>
                     </div>
                 </div>
             </div>
 
             {{-- 4. Ürün Standardı, Kullanım Alanı *, Çalışma Modu --}}
-            <div style="display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 0.85rem; margin-bottom: 1rem;">
+            <div class="rfq-grid-3 mb-3">
                 <div>
                     <label for="modal_product_standard" class="rfq-form-label">
                         {{ $isEn ? 'Product Standard' : 'Ürün Standardı' }}
@@ -2234,7 +2509,7 @@
             </div>
 
             {{-- 5. Elektronik Devre * & AC / DC toggle * --}}
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; align-items: start;">
+            <div class="rfq-grid-devre mb-3">
                 <div>
                     <label for="modal_electronic_circuit" class="rfq-form-label">
                         {{ $isEn ? 'Electronic Circuit' : 'Elektronik Devre' }} <span style="color:#EF4444;font-weight:bold;">*</span>
@@ -2251,7 +2526,7 @@
                 </div>
 
                 <div>
-                    <label class="rfq-form-label"><span style="color:#EF4444;font-weight:bold;">*</span></label>
+                    <label class="rfq-form-label">{{ $isEn ? 'Power Supply Type' : 'Besleme Türü' }} <span style="color:#EF4444;font-weight:bold;">*</span></label>
                     <div class="rfq-power-toggle">
                         <input type="radio" name="power_type" id="modal_power_ac" value="AC" checked>
                         <label for="modal_power_ac" class="rfq-power-btn">AC</label>
@@ -2275,7 +2550,7 @@
                 <label for="modal_dimensions" class="rfq-form-label">
                     {{ $isEn ? 'Equipment Dimensions' : 'Cihazın Boyutları' }}
                 </label>
-                <div style="max-width: 280px;">
+                <div class="rfq-dim-wrap">
                     <input type="text" name="dimensions" id="modal_dimensions" class="form-control" value="{{ old('dimensions') }}">
                     <span class="rfq-form-sublabel">
                         {{ $isEn ? 'Specify as WIDTH x LENGTH x HEIGHT.' : 'EN x BOY x YÜKSEKLİK şeklinde belirtiniz.' }}
@@ -2292,16 +2567,16 @@
             </div>
 
             {{-- 9. Resim, Datasheet --}}
-            <div class="form-group mb-4" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <label class="rfq-form-label" style="min-width: 130px; margin: 0;">
+            <div class="form-group mb-4 rfq-upload-row">
+                <label class="rfq-form-label">
                     {{ $isEn ? 'Image, Datasheet' : 'Resim, Datasheet' }}
                 </label>
-                <div>
+                <div class="rfq-upload-controls">
                     <input type="file" name="attachment" id="modalAttachmentInput" style="display: none;" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.zip" onchange="document.getElementById('modalFileName').textContent = this.files[0] ? this.files[0].name : '{{ $isEn ? 'No file selected' : 'Dosya seçilmedi' }}';">
-                    <button type="button" class="btn btn-sm btn-primary" onclick="document.getElementById('modalAttachmentInput').click();" style="background:#2F80ED; border:none; padding: 0.45rem 1.4rem; font-weight: 700;">
-                        {{ $isEn ? 'Choose File' : 'Dosya Seç' }}
+                    <button type="button" class="rfq-upload-btn" onclick="document.getElementById('modalAttachmentInput').click();">
+                        <i class="bi bi-cloud-arrow-up"></i> {{ $isEn ? 'Choose File' : 'Dosya Seç' }}
                     </button>
-                    <span id="modalFileName" style="font-size: 0.85rem; color: #64748B; font-style: italic; margin-left: 0.5rem;">
+                    <span id="modalFileName" class="rfq-filename">
                         {{ $isEn ? 'No file selected' : 'Dosya seçilmedi' }}
                     </span>
                 </div>
@@ -2313,7 +2588,7 @@
                     <i class="bi bi-person-lines-fill" style="color: #2F80ED;"></i>
                     <span>{{ $isEn ? 'Requester Contact Information' : 'Talep Eden İletişim Bilgileri' }}</span>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="rfq-contact-grid">
                     <div>
                         <label for="modal_name" class="rfq-contact-label">
                             {{ $isEn ? 'Contact Person Name' : 'Yetkili Adı Soyadı' }} <span style="color:#EF4444;font-weight:bold;">*</span>
@@ -2341,14 +2616,14 @@
                 </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-                <a href="{{ route('test-request') }}" class="btn-outline" style="font-size: 0.88rem; padding: 0.55rem 1.1rem; text-decoration: none;">
-                    <i class="bi bi-box-arrow-up-right me-1"></i> {{ $isEn ? 'Open Full Page Form' : 'Tam Sayfada Aç' }}
+            <div class="rfq-modal-footer-actions">
+                <a href="{{ route('test-request') }}" class="btn-outline rfq-btn-fullpage">
+                    <i class="bi bi-box-arrow-up-right"></i> {{ $isEn ? 'Open Full Page Form' : 'Tam Sayfada Aç' }}
                 </a>
-                <div style="display: flex; gap: 0.6rem;">
+                <div class="rfq-btn-group">
                     <button type="button" class="btn-outline" onclick="closeRfqModal()">{{ $isEn ? 'Cancel' : 'İptal' }}</button>
-                    <button type="submit" class="btn-primary" style="background: linear-gradient(135deg, #2F80ED 0%, #1E70BF 100%); border: none;">
-                        <i class="bi bi-send-fill me-1"></i> {{ $isEn ? \App\Models\Setting::get('test_form_submit_btn_en', 'Submit Test Request') : \App\Models\Setting::get('test_form_submit_btn_tr', 'Deney Talebini Gönder') }}
+                    <button type="submit" class="rfq-btn-submit">
+                        <i class="bi bi-send-fill"></i> {{ $isEn ? \App\Models\Setting::get('test_form_submit_btn_en', 'Submit Test Request') : \App\Models\Setting::get('test_form_submit_btn_tr', 'Deney Talebini Gönder') }}
                     </button>
                 </div>
             </div>
@@ -2374,29 +2649,91 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Mobile Hamburger
+    // Mobile Hamburger & Drawer Engine
     const hamburger = document.getElementById('hamburger');
     const drawer    = document.getElementById('mobileDrawer');
-    hamburger.addEventListener('click', () => {
-        const isOpen = drawer.classList.toggle('open');
-        hamburger.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+
+    function closeMobileDrawer() {
+        if (drawer && drawer.classList.contains('open')) {
+            drawer.classList.remove('open');
+            if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            document.body.classList.remove('drawer-open');
+        }
+    }
+
+    if (hamburger && drawer) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = drawer.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.body.classList.toggle('drawer-open', isOpen);
+        });
+
+        // Close mobile drawer when ANY link inside it is clicked
+        drawer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                closeMobileDrawer();
+
+                // If link is an anchor on current page, smooth scroll with header offset
+                if (href && href.includes('#')) {
+                    try {
+                        const targetUrl = new URL(link.href, window.location.origin);
+                        if (targetUrl.pathname === window.location.pathname && targetUrl.hash) {
+                            const targetEl = document.querySelector(targetUrl.hash);
+                            if (targetEl) {
+                                e.preventDefault();
+                                history.pushState(null, null, targetUrl.hash);
+                                setTimeout(() => {
+                                    const headerOffset = 85;
+                                    const elementPosition = targetEl.getBoundingClientRect().top;
+                                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                    window.scrollTo({
+                                        top: Math.max(0, offsetPosition),
+                                        behavior: 'smooth'
+                                    });
+                                }, 150);
+                            }
+                        }
+                    } catch (err) {}
+                }
+            });
+        });
+    }
 
     // Defense RFQ Modal triggers
     function openRfqModal(subject = '') {
+        closeMobileDrawer();
         const modal = document.getElementById('rfqModal');
         if (subject) {
-            document.getElementById('rfq_subject').value = subject;
+            const subjEl = document.getElementById('rfq_subject');
+            if (subjEl) subjEl.value = subject;
+            const devName = document.getElementById('modal_device_name');
+            if (devName && !devName.value) devName.value = subject;
         }
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        if (modal) {
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
+        }
     }
     function closeRfqModal() {
         const modal = document.getElementById('rfqModal');
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
+        if (modal) {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open');
+        }
     }
+
+    // Global Escape Key to close modal or drawer
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMobileDrawer();
+            closeRfqModal();
+        }
+    });
 
     // Auto dismiss flash
     document.querySelectorAll('.flash-msg').forEach(msg => {

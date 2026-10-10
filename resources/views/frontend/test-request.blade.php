@@ -52,8 +52,13 @@
     }
 
     @media (max-width: 768px) {
-        .test-form-wrapper { padding: 1.25rem 0.5rem 3rem; }
-        .test-form-container { padding: 1.75rem 1.25rem 2.5rem; border-radius: 4px; }
+        .test-form-wrapper { padding: 1rem 0.5rem 3rem; }
+        .test-form-container { padding: 1.5rem 1.1rem 2rem; border-radius: 6px; }
+        .test-input, .test-select, .test-textarea { font-size: 16px !important; }
+    }
+    @media (max-width: 480px) {
+        .test-form-wrapper { padding: 0.65rem 0.25rem 2.5rem; }
+        .test-form-container { padding: 1.25rem 0.85rem 1.75rem; border-radius: 6px; }
     }
 
     /* ── HEADER AREA ── */
@@ -66,27 +71,31 @@
         text-align: center;
         font-family: var(--font-head, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
         font-size: 2.35rem;
-        font-weight: 700;
+        font-weight: 800;
         color: #2F80ED;
         margin: 0 0 1.25rem 0;
         letter-spacing: -0.01em;
+        line-height: 1.2;
     }
 
     @media (max-width: 600px) {
-        .test-form-title { font-size: 1.85rem; }
+        .test-form-title { font-size: 1.45rem; margin-bottom: 0.75rem; }
+    }
+    @media (max-width: 400px) {
+        .test-form-title { font-size: 1.25rem; }
     }
 
     .test-title-divider {
         height: 1.5px;
         background: #BFDBFE;
         width: 100%;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.5rem;
     }
 
     .test-doc-meta {
         text-align: right;
         font-family: var(--font-mono, "Segoe UI", Roboto, monospace);
-        font-size: 0.96rem;
+        font-size: 0.92rem;
         font-weight: 700;
         color: #2F80ED;
         line-height: 1.55;
@@ -96,6 +105,21 @@
     .test-doc-meta span {
         font-weight: 700;
         color: #2F80ED;
+    }
+
+    @media (max-width: 600px) {
+        .test-doc-meta {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            font-size: 0.82rem;
+            background: rgba(47, 128, 237, 0.05);
+            padding: 0.75rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(47, 128, 237, 0.15);
+            margin-bottom: 1.5rem;
+        }
     }
 
     /* ── FORM GROUPS & LABELS ── */
@@ -236,6 +260,17 @@
         color: #FFFFFF;
     }
 
+    @media (max-width: 600px) {
+        .test-power-toggle {
+            max-width: 100%;
+            width: 100%;
+            height: 42px;
+        }
+        .test-power-toggle .toggle-btn {
+            font-size: 1rem;
+        }
+    }
+
     /* ── CİHAZIN BOYUTLARI ── */
     .test-dim-wrap {
         max-width: 250px;
@@ -292,6 +327,34 @@
         font-style: italic;
     }
 
+    @media (max-width: 600px) {
+        .test-upload-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+        .test-upload-row > label.test-label {
+            min-width: 100% !important;
+        }
+        .test-upload-row > div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .test-file-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+        }
+        .test-file-name {
+            text-align: center;
+            margin: 0 !important;
+            display: block;
+            word-break: break-all;
+        }
+    }
+
     /* ── REQUESTER CONTACT INFORMATION ── */
     .test-contact-card {
         background: #F8FAFC;
@@ -323,7 +386,19 @@
     }
 
     @media (max-width: 600px) {
-        .test-contact-grid { grid-template-columns: 1fr; }
+        .test-contact-card {
+            padding: 1.15rem 0.85rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .test-contact-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.85rem;
+        }
+        .test-contact-grid {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+        }
     }
 
     .test-label-sm {
@@ -366,6 +441,18 @@
         box-shadow: 0 8px 20px rgba(47, 128, 237, 0.45);
     }
 
+    @media (max-width: 600px) {
+        .test-submit-area {
+            margin-top: 1.75rem;
+        }
+        .test-submit-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.95rem 1.25rem;
+            font-size: 1rem;
+        }
+    }
+
     /* ── SENIOR CRAFTSMANSHIP: TEST REQUEST FORM DARK THEME OVERRIDES ── */
     [data-theme="dark"] .test-form-wrapper {
         background-color: #070B14 !important;
@@ -404,6 +491,8 @@
     }
     [data-theme="dark"] .test-doc-meta {
         color: #60A5FA !important;
+        background: rgba(56, 189, 248, 0.08) !important;
+        border-color: rgba(56, 189, 248, 0.2) !important;
     }
     [data-theme="dark"] .test-doc-meta span {
         color: #93C5FD !important;
@@ -603,7 +692,7 @@
                 </div>
 
                 <div class="test-form-group">
-                    <label class="test-label"><span class="req">*</span></label>
+                    <label class="test-label">{{ $isEn ? 'Power Supply Type' : 'Besleme Türü' }} <span class="req">*</span></label>
                     <div class="test-power-toggle">
                         <input type="radio" name="power_type" id="power_ac" value="AC" {{ old('power_type', 'AC') == 'AC' ? 'checked' : '' }} required>
                         <label for="power_ac" class="toggle-btn">AC</label>
