@@ -22,8 +22,10 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Seed Categories, Products, References, Certificates
+        // 2. Seed Settings, Pages, Categories, Products, References, Certificates
         $this->call([
+            SettingSeeder::class,
+            PageSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             ReferenceSeeder::class,
