@@ -3,6 +3,14 @@ set -e
 
 echo "==> Initializing EMC Defense Laravel Application..."
 
+# Clean any accidental trailing newlines or whitespace from database URLs
+if [ -n "$DATABASE_URL" ]; then
+    export DATABASE_URL=$(printf "%s" "$DATABASE_URL" | tr -d '\r\n' | xargs)
+fi
+if [ -n "$DB_URL" ]; then
+    export DB_URL=$(printf "%s" "$DB_URL" | tr -d '\r\n' | xargs)
+fi
+
 # Ensure SQLite file exists ONLY if SQLite is actively used
 if [ -n "$DATABASE_URL" ] || [ -n "$DB_URL" ] || [ "$DB_CONNECTION" = "pgsql" ] || [ "$DB_CONNECTION" = "mysql" ]; then
     echo "==> Using External Database Connection..."
