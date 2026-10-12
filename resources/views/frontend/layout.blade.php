@@ -2363,14 +2363,19 @@
                     <li><a href="{{ route('home') }}#capabilities"><i class="bi bi-chevron-right"></i> {{ $isEn ? 'TEMPEST SDIP-27 Power Filters' : 'TEMPEST SDIP-27 Güç Filtreleme' }}</a></li>
                     <li><a href="{{ route('home') }}#capabilities"><i class="bi bi-chevron-right"></i> {{ $isEn ? 'Turnkey Anechoic Chambers' : 'Anahtar Teslim Yankısız Odalar' }}</a></li>
                     <li><a href="{{ route('home') }}#capabilities"><i class="bi bi-chevron-right"></i> {{ $isEn ? 'LISN & Military Test Antennas' : 'LISN & Askeri Test Antenleri' }}</a></li>
-                    <li><a href="{{ route('references') }}"><i class="bi bi-chevron-right"></i> {{ $isEn ? 'Defense Prime References' : 'Savunma Sanayii Referansları' }}</a></li>
-                    <li><a href="{{ route('certificates') }}"><i class="bi bi-chevron-right"></i> ISO 9001:2015 &amp; ISO 17025</a></li>
+                    @if(!$refPage || ($refPage->is_active && $refPage->show_in_footer))
+                        <li><a href="{{ route('references') }}"><i class="bi bi-chevron-right"></i> {{ $isEn ? 'Defense Prime References' : 'Savunma Sanayii Referansları' }}</a></li>
+                    @endif
+                    @if(!$certPage || ($certPage->is_active && $certPage->show_in_footer))
+                        <li><a href="{{ route('certificates') }}"><i class="bi bi-chevron-right"></i> ISO 9001:2015 &amp; ISO 17025</a></li>
+                    @endif
                     @foreach(\App\Models\Page::where('is_active', true)->whereNotIn('slug', ['certificates', 'references', 'contact'])->where('show_in_footer', true)->orderBy('sort_order')->get() as $customFootPage)
                         <li><a href="{{ url('/' . $customFootPage->slug) }}"><i class="bi bi-chevron-right"></i> {{ $customFootPage->title }}</a></li>
                     @endforeach
                 </ul>
             </div>
 
+            @if(!$certPage || ($certPage->is_active && $certPage->show_in_footer))
             <div>
                 <p class="footer-col-title"><i class="bi bi-journal-check"></i> {{ $isEn ? \App\Models\Setting::get('footer_col2_title_en', 'Certificates & Accreditations') : \App\Models\Setting::get('footer_col2_title_tr', 'Sertifikalar & Standartlar') }}</p>
                 <ul class="footer-links">
@@ -2382,6 +2387,7 @@
                     <li><a href="{{ route('certificates') }}"><i class="bi bi-check2"></i> CISPR 16-1-2 {{ $isEn ? 'Compliance' : 'Akreditasyonu' }}</a></li>
                 </ul>
             </div>
+            @endif
 
             <div>
                 <p class="footer-col-title"><i class="bi bi-geo-alt-fill"></i> {{ $isEn ? \App\Models\Setting::get('footer_col3_title_en', 'Manufacturing & Lab Facility') : \App\Models\Setting::get('footer_col3_title_tr', 'Üretim & Test Tesisi') }}</p>

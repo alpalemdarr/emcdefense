@@ -3,7 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Category;
+use App\Models\Certificate;
 use App\Models\Message;
+use App\Models\Page;
+use App\Models\Product;
+use App\Models\Reference;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,15 +28,25 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Seed Settings, Pages, Categories, Products, References, Certificates
-        $this->call([
-            SettingSeeder::class,
-            PageSeeder::class,
-            CategorySeeder::class,
-            ProductSeeder::class,
-            ReferenceSeeder::class,
-            CertificateSeeder::class,
-        ]);
+        // 2. Seed Settings, Pages, Categories, Products, References, Certificates only if empty
+        if (Setting::count() === 0) {
+            $this->call(SettingSeeder::class);
+        }
+        if (Page::count() === 0) {
+            $this->call(PageSeeder::class);
+        }
+        if (Category::count() === 0) {
+            $this->call(CategorySeeder::class);
+        }
+        if (Product::count() === 0) {
+            $this->call(ProductSeeder::class);
+        }
+        if (Reference::count() === 0) {
+            $this->call(ReferenceSeeder::class);
+        }
+        if (Certificate::count() === 0) {
+            $this->call(CertificateSeeder::class);
+        }
 
         // 3. Seed Sample Contact Messages / Inquiries
         if (Message::count() === 0) {

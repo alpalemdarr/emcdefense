@@ -143,4 +143,19 @@ class PageController extends Controller
         return redirect()->route('admin.pages.index')
             ->with('success', "'{$title}' sayfası başarıyla silindi.");
     }
+
+    /**
+     * Toggle the active status of the specified page.
+     */
+    public function toggleStatus(Page $page): RedirectResponse
+    {
+        $page->is_active = ! $page->is_active;
+        $page->save();
+
+        $statusText = $page->is_active ? 'yayına alındı (Aktif)' : 'pasife alındı (Pasif)';
+        $title = $page->title_tr ?: $page->title_en ?: $page->slug;
+
+        return redirect()->back()
+            ->with('success', "'{$title}' sayfası başarıyla {$statusText}.");
+    }
 }

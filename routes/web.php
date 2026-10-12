@@ -51,6 +51,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('categories', CategoryController::class)->except(['show']);
         Route::resource('products', ProductController::class)->except(['show']);
+        Route::patch('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
         Route::resource('pages', AdminPageController::class)->except(['show']);
         Route::resource('references', ReferenceController::class)->except(['show']);
         Route::resource('certificates', CertificateController::class)->except(['show']);

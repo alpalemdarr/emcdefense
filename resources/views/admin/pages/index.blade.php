@@ -100,15 +100,21 @@
                             </div>
                         </td>
                         <td>
-                            @if($page->is_active)
-                                <span class="badge-status badge-active">
-                                    <i class="bi bi-check-circle-fill"></i> Yayında
-                                </span>
-                            @else
-                                <span class="badge-status badge-inactive">
-                                    <i class="bi bi-x-circle-fill"></i> Taslak
-                                </span>
-                            @endif
+                            <form action="{{ route('admin.pages.toggle-status', $page->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="border-0 bg-transparent p-0 text-start" style="cursor: pointer;" title="{{ $page->is_active ? 'Yayında (Aktif) – Pasife almak için tıklayın' : 'Pasif (Gizli) – Yayına almak için tıklayın' }}">
+                                    @if($page->is_active)
+                                        <span class="badge-status badge-active" style="display: inline-flex; align-items: center; gap: 4px;">
+                                            <i class="bi bi-check-circle-fill"></i> Yayında
+                                        </span>
+                                    @else
+                                        <span class="badge-status badge-inactive" style="display: inline-flex; align-items: center; gap: 4px;">
+                                            <i class="bi bi-pause-circle-fill"></i> Pasif
+                                        </span>
+                                    @endif
+                                </button>
+                            </form>
                         </td>
                         <td style="text-align: right;">
                             <div class="d-inline-flex gap-1">
@@ -117,6 +123,13 @@
                                         ? ($page->slug === 'certificates' ? route('certificates') : ($page->slug === 'references' ? route('references') : route('contact')))
                                         : url('/' . $page->slug);
                                 @endphp
+                                <form action="{{ route('admin.pages.toggle-status', $page->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn-action {{ $page->is_active ? 'text-warning' : 'text-success' }}" title="{{ $page->is_active ? 'Sayfayı Pasife Al (Gizle)' : 'Sayfayı Yayına Al (Aktifleştir)' }}">
+                                        <i class="bi bi-{{ $page->is_active ? 'eye-slash' : 'eye' }}"></i>
+                                    </button>
+                                </form>
                                 <a href="{{ $pageUrl }}" target="_blank" class="btn-action" title="Ön yüzde incele">
                                     <i class="bi bi-box-arrow-up-right"></i>
                                 </a>

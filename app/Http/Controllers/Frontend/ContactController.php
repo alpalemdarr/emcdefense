@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,11 @@ class ContactController extends Controller
      */
     public function show()
     {
+        $page = Page::where('slug', 'contact')->first();
+        if ($page && ! $page->is_active) {
+            abort(404);
+        }
+
         return view('frontend.contact');
     }
 
@@ -22,6 +28,11 @@ class ContactController extends Controller
      */
     public function showTestRequest()
     {
+        $page = Page::where('slug', 'deney-talep-formu')->first();
+        if ($page && ! $page->is_active) {
+            abort(404);
+        }
+
         return view('frontend.test-request');
     }
 

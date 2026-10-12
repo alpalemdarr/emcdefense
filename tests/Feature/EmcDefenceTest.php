@@ -419,4 +419,57 @@ class EmcDefenceTest extends TestCase
         $deleteResponse->assertRedirect(route('admin.pages.index'));
         $this->assertDatabaseMissing('pages', ['id' => $sysPage->id]);
     }
+
+    public function test_admin_can_toggle_page_status(): void
+    {
+        $admin = Admin::create([
+            'name' => 'Admin Toggle Manager',
+            'email' => 'togglemgr@test.com',
+            'password' => 'secret123',
+        ]);
+
+        $page = Page::create([
+            'slug' => 'test-toggle-page',
+            'title_tr' => 'Toggle Test Sayfası',
+            'title_en' => 'Toggle Test Page',
+            'is_system' => false,
+            'is_active' => true,
+        ]);
+
+        $this->actingAs($admin, 'admin');
+
+        // Toggle from active to inactive
+        $response = $this->patch(route('admin.pages.toggle-status', $page->id));
+        $response->assertStatus(302);
+        $page->refresh();
+        $this->assertFalse($page->is_active);
+
+        // Frontend should now return 404 for inactive page
+        $frontendResponse = $this->get('/test-toggle-page');
+        $frontendResponse->assertStatus(404);
+
+        // Toggle back to active
+        $response2 = $this->patch(route('admin.pages.toggle-status', $page->id));
+        $response2->assertStatus(302);
+        $page->refresh();
+        $this->assertTrue($page->is_active);
+
+        // Frontend should now return 200
+        $frontendResponse2 = $this->get('/test-toggle-page');
+        $frontendResponse2->assertStatus(200);
+    }
+
+    public function test_inactive_system_page_returns_404(): void
+    {
+        $page = Page::create([
+            'slug' => 'references',
+            'title_tr' => 'Referanslar',
+            'title_en' => 'References',
+            'is_system' => true,
+            'is_active' => false,
+        ]);
+
+        $response = $this->get('/references');
+        $response->assertStatus(404);
+    }
 }
