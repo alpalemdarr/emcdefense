@@ -10,3 +10,4 @@ storage/framework/cache/data/*
 storage/framework/sessions/*
 storage/framework/views/*
 .phpunit.result.cache
+database/*.sqlite

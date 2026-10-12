@@ -3,8 +3,10 @@ set -e
 
 echo "==> Initializing EMC Defense Laravel Application..."
 
-# Ensure SQLite file exists if SQLite is used
-if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
+# Ensure SQLite file exists ONLY if SQLite is actively used
+if [ -n "$DATABASE_URL" ] || [ -n "$DB_URL" ] || [ "$DB_CONNECTION" = "pgsql" ] || [ "$DB_CONNECTION" = "mysql" ]; then
+    echo "==> Using External Database Connection..."
+elif [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
     mkdir -p /var/www/html/database
     touch /var/www/html/database/database.sqlite
     chown -R www-data:www-data /var/www/html/database

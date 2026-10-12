@@ -4,6 +4,9 @@ WORKDIR /var/www/html
 
 USER root
 
+# Install PostgreSQL extensions for PHP PDO
+RUN install-php-extensions pdo_pgsql pgsql
+
 # Copy application files
 COPY --chown=www-data:www-data . /var/www/html
 
